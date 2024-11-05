@@ -21,13 +21,17 @@
         app:layout_constraintVertical_bias="0.022" />
 
     <TextView
-        android:id="@+id/marcaTV"
+        android:id="@+id/marcaTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Marca:"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="19dp"
-        tools:layout_editor_absoluteY="85dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.074"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.123" />
 
     <EditText
         android:id="@+id/marcaEt"
@@ -43,15 +47,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.113" />
 
-    <TextView
-        android:id="@+id/modelTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Model:"
-        android:textSize="20sp"
-        tools:layout_editor_absoluteX="19dp"
-        tools:layout_editor_absoluteY="148dp" />
-
     <EditText
         android:id="@+id/modelEt"
         android:layout_width="wrap_content"
@@ -61,10 +56,23 @@
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.204" />
+
+    <TextView
+        android:id="@+id/modelTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Model:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.214" />
 
     <TextView
         android:id="@+id/nrPasagTV"
@@ -112,8 +120,12 @@
         android:layout_height="wrap_content"
         android:text="Greutate:"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="19dp"
-        tools:layout_editor_absoluteY="254dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.362" />
 
     <EditText
         android:id="@+id/greutateEt"

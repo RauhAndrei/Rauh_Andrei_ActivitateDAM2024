@@ -16,8 +16,6 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class AdaugareAvion extends AppCompatActivity {
 
-    Button adAvionBtn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +27,7 @@ public class AdaugareAvion extends AppCompatActivity {
             return insets;
         });
 
-        adAvionBtn = findViewById(R.id.adAvionBtn) ;
+        Button adAvionBtn = findViewById(R.id.adAvionBtn) ;
         adAvionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,7 +44,7 @@ public class AdaugareAvion extends AppCompatActivity {
                 Float greutate = Float.parseFloat(etGreutate.getText().toString());
 
                 CheckBox motorinaCb = findViewById(R.id.motorinaCb);
-                boolean motorina=((CheckBox)findViewById(R.id.motorinaCb)).isChecked();
+                boolean motorina = ((CheckBox)findViewById(R.id.motorinaCb)).isChecked();
 
                 Avion avion = new Avion(marca, model, nrPasageri, greutate, motorina);
 
@@ -54,7 +52,7 @@ public class AdaugareAvion extends AppCompatActivity {
                 it.putExtra("avion", avion);
                 Toast.makeText(AdaugareAvion.this, avion.toString(), Toast.LENGTH_LONG).show();
                 setResult(RESULT_OK, it);
-                finish(); //imi da crash dc scriu linia aceasta
+                finish();
             }
         });
 
