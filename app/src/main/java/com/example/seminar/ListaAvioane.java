@@ -18,7 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.List;
 
 public class ListaAvioane extends AppCompatActivity {
-
+    private List<Avion> avioane = null;
     private int idModificat = 0;
     private AvionAdapter adapter = null;
 
@@ -35,36 +35,35 @@ public class ListaAvioane extends AppCompatActivity {
         });
 
         Intent it = getIntent();
-        List<Avion> avioane = it.getParcelableArrayListExtra("avioane");
+        avioane = it.getParcelableArrayListExtra("avioane");
         ListView avioaneLv = findViewById(R.id.avioaneLV);
 
-
 //        ArrayAdapter<Avion> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, avioane);
-//        avioaneLv.setAdapter(adapter);
         adapter = new AvionAdapter(avioane, getApplicationContext(), R.layout.row_item);
         avioaneLv.setAdapter(adapter);
 
         avioaneLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intentModifica = new Intent(getApplicationContext(), AdaugareAvion.class);
                 intentModifica.putExtra("avion", avioane.get(i));
-                idModificat = 1;
+                idModificat = i;
                 startActivityForResult(intentModifica, 209);
-                Toast.makeText(ListaAvioane.this, avioane.get(i).toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), avioane.get(i).toString(), Toast.LENGTH_SHORT).show();//nu functioneaza
             }
         });
 
         avioaneLv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int i, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int i, long l) {
+                //nu functioneaza
                 avioane.remove(i);
                 adapter.notifyDataSetChanged();
                 return false;
             }
         });
 
-        
+
 
     }
 }

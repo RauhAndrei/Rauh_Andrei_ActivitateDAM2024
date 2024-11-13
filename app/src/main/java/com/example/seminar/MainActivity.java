@@ -19,7 +19,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<Avion> avioane = null;
+    private List<Avion> avioane = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +27,7 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        avioane = new ArrayList<>();
-
-        Button toFormularBtn = findViewById(R.id.toAdAvionFormularBtn);
-        toFormularBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(getApplicationContext(), AdaugareAvion.class);
-                startActivityForResult(it, 403);
-            }
-        });
+        avioane.add(new Avion("marca", "model", 123, 3143.5f, true));
 
         Button toListaAvioaneBtn = findViewById(R.id.toListaAvioaneBtn);
         toListaAvioaneBtn.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +35,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent it = new Intent(getApplicationContext(), ListaAvioane.class);
                 it.putParcelableArrayListExtra("avioane", (ArrayList<? extends Parcelable>) avioane);
+                //trimitem lista de avioane in aceea clasa, fie goala fie cu datele care le am primit mai jos
                 startActivity(it);
+            }
+        });
+
+        Button toFormularBtn = findViewById(R.id.toAdAvionFormularBtn);
+        toFormularBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(getApplicationContext(), AdaugareAvion.class);
+                startActivityForResult(it, 403);//NU AM INTELES FOARTE BINE CUM SE LUCREAZA CU ACEASTA
             }
         });
 

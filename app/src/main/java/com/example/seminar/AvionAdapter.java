@@ -6,13 +6,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
-
 import java.util.List;
 
 public class AvionAdapter extends BaseAdapter {
     private List<Avion> avioane = null;
-    private Context ctx;
-    private int resursaLayout;
+    private Context ctx;//?????????????????
+    private int resursaLayout;//?????????????????
 
     public AvionAdapter(List<Avion> avioane, Context ctx, int resursaLayout) {
         this.avioane = avioane;
@@ -32,29 +31,30 @@ public class AvionAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
 
     @Override
     public View getView(int i, View convertView, ViewGroup viewGroup) {
+        //?????????????????
         LayoutInflater inflater = LayoutInflater.from(ctx);
         View v = inflater.inflate(resursaLayout, viewGroup, false);
 
-        TextView marcaTv = v.findViewById(R.id.marcaTv);
+        TextView marcaTv = v.findViewById(R.id.marcaTV);
         TextView modelTv = v.findViewById(R.id.modelTV);
-        TextView pasageriTv = v.findViewById(R.id.nrPasageriET);
-        TextView greutateTv = v.findViewById(R.id.greutateET);
+        TextView pasageriTv = v.findViewById(R.id.nrPasageriTV);
+        TextView greutateTv = v.findViewById(R.id.greutateTV);
         CheckBox motorinaCb = v.findViewById(R.id.motorinaCB);
 
         Avion avion = (Avion)getItem(i);
 
         marcaTv.setText(avion.getMarca());
         modelTv.setText(avion.getModel());
-        pasageriTv.setText(avion.getNrMaxPasageri());
+        pasageriTv.setText(String.valueOf(avion.getNrMaxPasageri()));
         greutateTv.setText(String.valueOf((avion.getGreutate())));
         motorinaCb.setChecked(avion.isAreMotorina());
-
+        //?????????????????
         return v;
     }
 

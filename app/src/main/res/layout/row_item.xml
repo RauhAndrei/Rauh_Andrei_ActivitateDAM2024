@@ -5,31 +5,43 @@
     android:orientation="horizontal">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/marcaTv"/>
+        android:id="@+id/marcaTV"
+        android:text="Marca"
+        android:layout_marginEnd="16dp"
+        android:textSize="20sp"/>
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/modelET"/>
+        android:id="@+id/modelTV"
+        android:text="Model"
+        android:layout_marginEnd="16dp"
+        android:textSize="20sp"/>
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/nrPasageriET"/>
+        android:id="@+id/nrPasageriTV"
+        android:text="Nr Pasageri"
+        android:layout_marginEnd="16dp"
+        android:textSize="20sp"/>
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/greutateET"/>
+        android:id="@+id/greutateTV"
+        android:text="Greutate"
+        android:layout_marginEnd="16dp"
+        android:textSize="20sp"/>
 
     <CheckBox
+        android:id="@+id/motorinaCB"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="Motorina"
+        android:layout_height="wrap_content"
         android:enabled="false"
-        android:id="@+id/motorinaCB"/>
-
+        android:text="Motorina"
+        android:textSize="20sp"/>
 
 </LinearLayout>

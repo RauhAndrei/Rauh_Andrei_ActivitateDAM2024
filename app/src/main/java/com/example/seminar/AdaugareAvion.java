@@ -1,11 +1,11 @@
 package com.example.seminar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -27,23 +27,38 @@ public class AdaugareAvion extends AppCompatActivity {
             return insets;
         });
 
+        //?????????????????
+        Intent it = getIntent();
+        if (it.hasExtra("avion")) {
+            Avion avion = it.getParcelableExtra("avion");
+            //?????????????????
+            TextView marcaTv = findViewById(R.id.marcaTV);
+            TextView modelTv = findViewById(R.id.modelTV);
+            TextView pasageriTv = findViewById(R.id.nrPasageriTV);
+            TextView greutateTv = findViewById(R.id.greutateTV);
+            CheckBox motorinaCb = findViewById(R.id.motorinaCB);
+
+            marcaTv.setText(avion.getMarca());
+            modelTv.setText(avion.getModel());
+            pasageriTv.setText(avion.getNrMaxPasageri());
+            greutateTv.setText(String.valueOf((avion.getGreutate())));
+            motorinaCb.setChecked(avion.isAreMotorina());
+        }
+
         Button adAvionBtn = findViewById(R.id.adAvionBtn) ;
         adAvionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText etMarca = findViewById(R.id.marcaEt);
-                String marca = etMarca.getText().toString();
-
                 EditText etModel = findViewById(R.id.modelEt);
-                String model = etModel.getText().toString();
-
                 EditText etNrPasageri = findViewById(R.id.nrPasageriEt);
-                int nrPasageri = Integer.parseInt(etNrPasageri.getText().toString());
-
                 EditText etGreutate = findViewById(R.id.greutateEt);
-                Float greutate = Float.parseFloat(etGreutate.getText().toString());
-
                 CheckBox motorinaCb = findViewById(R.id.motorinaCb);
+
+                String marca = etMarca.getText().toString();
+                String model = etModel.getText().toString();
+                int nrPasageri = Integer.parseInt(etNrPasageri.getText().toString());
+                Float greutate = Float.parseFloat(etGreutate.getText().toString());
                 boolean motorina = ((CheckBox)findViewById(R.id.motorinaCb)).isChecked();
 
                 Avion avion = new Avion(marca, model, nrPasageri, greutate, motorina);
