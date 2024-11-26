@@ -10,6 +10,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -48,7 +49,7 @@ public class ListaAvioane extends AppCompatActivity {
                 Intent intentModifica = new Intent(getApplicationContext(), AdaugareAvion.class);
                 intentModifica.putExtra("avion", avioane.get(i));
                 idModificat = i;
-                startActivityForResult(intentModifica, 209);
+                startActivityForResult(intentModifica, 200);
                 Toast.makeText(getApplicationContext(), avioane.get(i).toString(), Toast.LENGTH_SHORT).show();//nu functioneaza
             }
         });
@@ -64,6 +65,16 @@ public class ListaAvioane extends AppCompatActivity {
         });
 
 
+    }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK) {
+            if(requestCode == 200) {
+                avioane.set(idModificat, data.getParcelableExtra("avion1"));
+                adapter.notifyDataSetChanged();
+            }
+        }
     }
 }

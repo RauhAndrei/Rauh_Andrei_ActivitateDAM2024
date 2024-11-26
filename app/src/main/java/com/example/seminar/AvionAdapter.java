@@ -34,10 +34,8 @@ public class AvionAdapter extends BaseAdapter {
         return position;
     }
 
-
     @Override
     public View getView(int i, View convertView, ViewGroup viewGroup) {
-        //?????????????????
         LayoutInflater inflater = LayoutInflater.from(ctx);
         View v = inflater.inflate(resursaLayout, viewGroup, false);
 
@@ -54,7 +52,6 @@ public class AvionAdapter extends BaseAdapter {
         pasageriTv.setText(String.valueOf(avion.getNrMaxPasageri()));
         greutateTv.setText(String.valueOf((avion.getGreutate())));
         motorinaCb.setChecked(avion.isAreMotorina());
-        //?????????????????
         return v;
     }
 

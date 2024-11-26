@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent it = new Intent(getApplicationContext(), ListaAvioane.class);
                 it.putParcelableArrayListExtra("avioane", (ArrayList<? extends Parcelable>) avioane);
-                //trimitem lista de avioane in aceea clasa, fie goala fie cu datele care le am primit mai jos
                 startActivity(it);
             }
         });
@@ -45,7 +44,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(getApplicationContext(), AdaugareAvion.class);
-                startActivityForResult(it, 403);//NU AM INTELES FOARTE BINE CUM SE LUCREAZA CU ACEASTA
+                startActivityForResult(it, 403);
+            }
+        });
+
+        Button toImaginiAvioaneBtn = findViewById(R.id.toImaginiAvioane);
+        toImaginiAvioaneBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(getApplicationContext(), ImaginiAvioane.class);
+                startActivity(it);
+            }
+        });
+
+        Button toMainActivity2Btn = findViewById(R.id.toMainActivity2);
+        toMainActivity2Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(getApplicationContext(), MainActivity2.class);
+                startActivity(it);
             }
         });
 

@@ -27,24 +27,6 @@ public class AdaugareAvion extends AppCompatActivity {
             return insets;
         });
 
-        //?????????????????
-        Intent it = getIntent();
-        if (it.hasExtra("avion")) {
-            Avion avion = it.getParcelableExtra("avion");
-            //?????????????????
-            TextView marcaTv = findViewById(R.id.marcaTV);
-            TextView modelTv = findViewById(R.id.modelTV);
-            TextView pasageriTv = findViewById(R.id.nrPasageriTV);
-            TextView greutateTv = findViewById(R.id.greutateTV);
-            CheckBox motorinaCb = findViewById(R.id.motorinaCB);
-
-            marcaTv.setText(avion.getMarca());
-            modelTv.setText(avion.getModel());
-            pasageriTv.setText(avion.getNrMaxPasageri());
-            greutateTv.setText(String.valueOf((avion.getGreutate())));
-            motorinaCb.setChecked(avion.isAreMotorina());
-        }
-
         Button adAvionBtn = findViewById(R.id.adAvionBtn) ;
         adAvionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +52,24 @@ public class AdaugareAvion extends AppCompatActivity {
                 finish();
             }
         });
+
+        //?????????????????
+        Intent it = getIntent();
+        if (it.hasExtra("avion")) {
+            Avion avion = it.getParcelableExtra("avion");
+            //?????????????????
+            TextView marcaTv = findViewById(R.id.marcaTV);
+            TextView modelTv = findViewById(R.id.modelTV);
+            TextView pasageriTv = findViewById(R.id.nrPasageriTV);
+            TextView greutateTv = findViewById(R.id.greutateTV);
+            CheckBox motorinaCb = findViewById(R.id.motorinaCB);
+
+            marcaTv.setText(avion.getMarca());
+            modelTv.setText(avion.getModel());
+            pasageriTv.setText(avion.getNrMaxPasageri());
+            greutateTv.setText(String.valueOf((avion.getGreutate())));
+            motorinaCb.setChecked(avion.isAreMotorina());
+        }
 
     }
 
