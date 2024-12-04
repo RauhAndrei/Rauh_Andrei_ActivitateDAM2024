@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">seminar</string>
+    <string-array name="durata_zile">
+        <item>1</item>
+        <item>5</item>
+    </string-array>
 </resources>

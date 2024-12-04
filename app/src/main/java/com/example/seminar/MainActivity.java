@@ -3,7 +3,6 @@ package com.example.seminar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -57,11 +56,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Button toMainActivity2Btn = findViewById(R.id.toMainActivity2);
-        toMainActivity2Btn.setOnClickListener(new View.OnClickListener() {
+        Button toAccuWeatherBtn = findViewById(R.id.toAccuWeatherBtn);
+        toAccuWeatherBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(getApplicationContext(), MainActivity2.class);
+                Intent it = new Intent(getApplicationContext(), AccuWeatherActivity.class);
                 startActivity(it);
             }
         });

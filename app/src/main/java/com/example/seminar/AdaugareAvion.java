@@ -13,14 +13,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.room.Room;
 
 public class AdaugareAvion extends AppCompatActivity {
 
+    private AppDataBase dataBase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_adaugare_avion);
+
+        dataBase = Room.databaseBuilder( getApplicationContext(), AppDataBase.class, "avioane.db").build();
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -44,6 +48,11 @@ public class AdaugareAvion extends AppCompatActivity {
                 boolean motorina = ((CheckBox)findViewById(R.id.motorinaCb)).isChecked();
 
                 Avion avion = new Avion(marca, model, nrPasageri, greutate, motorina);
+
+                new Thread(() -> {
+                    dataBase.avionDao().insert(avion);
+                    runOnUiThread(() -> Toast.makeText(AdaugareAvion.this, "Avion salvat cu succes!", Toast.LENGTH_LONG).show());
+                }).start();
 
                 Intent it = new Intent();
                 it.putExtra("avion", avion);

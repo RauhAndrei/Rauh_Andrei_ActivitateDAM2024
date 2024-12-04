@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -15,19 +13,41 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.room.Room;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListaAvioane extends AppCompatActivity {
+    private AppDataBase dataBase;
     private List<Avion> avioane = null;
     private int idModificat = 0;
     private AvionAdapter adapter = null;
+
+    private void loadAvioaneFromDatabase() {
+        new Thread(() -> {
+            avioane = dataBase.avionDao().getAllAvioane();
+
+            runOnUiThread(() -> {
+                if (avioane == null || avioane.isEmpty()) {
+                    Toast.makeText(this, "Nu există avioane salvate!", Toast.LENGTH_LONG).show();
+                    avioane = new ArrayList<>();
+                }
+                ListView avioaneLv = findViewById(R.id.avioaneLV);
+                adapter = new AvionAdapter(avioane, this, R.layout.row_item);
+                avioaneLv.setAdapter(adapter);
+            });
+        }).start();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_lista_avioane);
+
+        dataBase = Room.databaseBuilder(getApplicationContext(), AppDataBase.class, "avioane.db").build();
+        loadAvioaneFromDatabase();
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -39,7 +59,6 @@ public class ListaAvioane extends AppCompatActivity {
         avioane = it.getParcelableArrayListExtra("avioane");
         ListView avioaneLv = findViewById(R.id.avioaneLV);
 
-//        ArrayAdapter<Avion> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, avioane);
         adapter = new AvionAdapter(avioane, getApplicationContext(), R.layout.row_item);
         avioaneLv.setAdapter(adapter);
 
@@ -54,27 +73,27 @@ public class ListaAvioane extends AppCompatActivity {
             }
         });
 
-        avioaneLv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int i, long l) {
-                //nu functioneaza
-                avioane.remove(i);
-                adapter.notifyDataSetChanged();
-                return false;
-            }
+        avioaneLv.setOnItemLongClickListener((parent, view, i, l) -> {
+            Avion avionDeSters = avioane.get(i);
+            avioane.remove(i);
+            new Thread(() -> dataBase.avionDao().delete(avionDeSters)).start();
+            adapter.notifyDataSetChanged();
+            return true;
         });
-
 
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK) {
-            if(requestCode == 200) {
-                avioane.set(idModificat, data.getParcelableExtra("avion1"));
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 200) {
+                Avion avionModificat = data.getParcelableExtra("avion");
+                avioane.set(idModificat, avionModificat);
+                new Thread(() -> dataBase.avionDao().insert(avionModificat)).start();
                 adapter.notifyDataSetChanged();
             }
         }
     }
+
 }

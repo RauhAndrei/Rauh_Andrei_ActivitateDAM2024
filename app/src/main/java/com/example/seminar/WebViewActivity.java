@@ -3,7 +3,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebView;
 import androidx.activity.EdgeToEdge;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;

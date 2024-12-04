@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:clickable="false">
 
     <TextView
         android:layout_width="wrap_content"
@@ -10,7 +14,9 @@
         android:id="@+id/marcaTV"
         android:text="Marca"
         android:layout_marginEnd="16dp"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:focusable="false"
+        android:clickable="false" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,7 +24,9 @@
         android:id="@+id/modelTV"
         android:text="Model"
         android:layout_marginEnd="16dp"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:focusable="false"
+        android:clickable="false" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,7 +34,9 @@
         android:id="@+id/nrPasageriTV"
         android:text="Nr Pasageri"
         android:layout_marginEnd="16dp"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:focusable="false"
+        android:clickable="false" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -34,7 +44,9 @@
         android:id="@+id/greutateTV"
         android:text="Greutate"
         android:layout_marginEnd="16dp"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:focusable="false"
+        android:clickable="false" />
 
     <CheckBox
         android:id="@+id/motorinaCB"
@@ -42,6 +54,8 @@
         android:layout_height="wrap_content"
         android:enabled="false"
         android:text="Motorina"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:focusable="false"
+        android:clickable="false" />
 
 </LinearLayout>
