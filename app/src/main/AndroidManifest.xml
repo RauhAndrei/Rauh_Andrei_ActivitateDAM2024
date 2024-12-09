@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Seminar"
         tools:targetApi="31">
-
+        <activity
+            android:name=".AvioaneFavorite"
+            android:exported="false" />
         <activity
             android:name=".AccuWeatherActivity"
             android:exported="false" />

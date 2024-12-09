@@ -10,8 +10,8 @@ import java.util.List;
 
 public class AvionAdapter extends BaseAdapter {
     private List<Avion> avioane = null;
-    private Context ctx;//?????????????????
-    private int resursaLayout;//?????????????????
+    private Context ctx;//ecranul unde o sa lucram cu UI
+    private int resursaLayout;//ID-ul unui fișier XML de layout care definește cum arată fiecare element din listă
 
     public AvionAdapter(List<Avion> avioane, Context ctx, int resursaLayout) {
         this.avioane = avioane;
@@ -54,6 +54,5 @@ public class AvionAdapter extends BaseAdapter {
         motorinaCb.setChecked(avion.isAreMotorina());
         return v;
     }
-
 
 }

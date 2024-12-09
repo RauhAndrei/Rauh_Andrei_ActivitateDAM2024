@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "avioane")
 public class Avion implements Parcelable {
+    //nu mi s au creat anumite fct corect cand am facut: implements Parcelable
     @PrimaryKey()
     @NonNull
     private String marca;
@@ -14,6 +15,14 @@ public class Avion implements Parcelable {
     private int nrMaxPasageri;
     private float greutate;
     private boolean areMotorina;
+
+    public String getKey() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.marca);
+        sb.append("-");
+        sb.append(this.model);
+        return sb.toString();
+    }
 
     public Avion() {
         this.marca = "Boeing";

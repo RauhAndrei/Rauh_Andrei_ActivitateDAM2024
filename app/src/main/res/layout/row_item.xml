@@ -8,46 +8,51 @@
     android:focusableInTouchMode="false"
     android:clickable="false">
 
+    <!-- Marca -->
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/marcaTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:text="Marca"
-        android:layout_marginEnd="16dp"
         android:textSize="20sp"
         android:focusable="false"
         android:clickable="false" />
 
+    <!-- Model -->
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/modelTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:text="Model"
-        android:layout_marginEnd="16dp"
         android:textSize="20sp"
         android:focusable="false"
         android:clickable="false" />
 
+    <!-- Număr Pasageri -->
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/nrPasageriTV"
-        android:text="Nr Pasageri"
-        android:layout_marginEnd="16dp"
-        android:textSize="20sp"
-        android:focusable="false"
-        android:clickable="false" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/greutateTV"
-        android:text="Greutate"
         android:layout_marginEnd="16dp"
+        android:text="Pasageri"
         android:textSize="20sp"
         android:focusable="false"
         android:clickable="false" />
 
+    <!-- Greutate -->
+    <TextView
+        android:id="@+id/greutateTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="Greutate"
+        android:textSize="20sp"
+        android:focusable="false"
+        android:clickable="false" />
+
+    <!-- Checkbox pentru Motorină -->
     <CheckBox
         android:id="@+id/motorinaCB"
         android:layout_width="wrap_content"

@@ -1,6 +1,7 @@
 package com.example.seminar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,6 +25,7 @@ public class ListaAvioane extends AppCompatActivity {
     private int idModificat = 0;
     private AvionAdapter adapter = null;
 
+    //Incarcam aviaonele in lista din baza de date
     private void loadAvioaneFromDatabase() {
         new Thread(() -> {
             avioane = dataBase.avionDao().getAllAvioane();
@@ -62,6 +64,7 @@ public class ListaAvioane extends AppCompatActivity {
         adapter = new AvionAdapter(avioane, getApplicationContext(), R.layout.row_item);
         avioaneLv.setAdapter(adapter);
 
+        //am crash cand apas
         avioaneLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -69,20 +72,28 @@ public class ListaAvioane extends AppCompatActivity {
                 intentModifica.putExtra("avion", avioane.get(i));
                 idModificat = i;
                 startActivityForResult(intentModifica, 200);
-                Toast.makeText(getApplicationContext(), avioane.get(i).toString(), Toast.LENGTH_SHORT).show();//nu functioneaza
+                Toast.makeText(getApplicationContext(), avioane.get(i).toString(), Toast.LENGTH_SHORT).show();
             }
         });
 
+        //Stergem avionul din baza de date
         avioaneLv.setOnItemLongClickListener((parent, view, i, l) -> {
-            Avion avionDeSters = avioane.get(i);
-            avioane.remove(i);
-            new Thread(() -> dataBase.avionDao().delete(avionDeSters)).start();
-            adapter.notifyDataSetChanged();
+//            Avion avionDeSters = avioane.get(i);
+//            avioane.remove(i);
+//            new Thread(() -> dataBase.avionDao().delete(avionDeSters)).start();
+//            adapter.notifyDataSetChanged();
+
+            SharedPreferences sp = getSharedPreferences("obiecteFavorite", MODE_PRIVATE);//dc nu exista il creeaza
+            SharedPreferences.Editor editor = sp.edit();
+
+            editor.putString(avioane.get(i).getKey(), avioane.get(i).toString());
+            editor.commit();
             return true;
         });
 
     }
 
+    //????????????????
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -95,5 +106,5 @@ public class ListaAvioane extends AppCompatActivity {
             }
         }
     }
-
+    //????????????????
 }

@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class ImagineAdapter extends BaseAdapter  {
+public class ImagineAdapter extends BaseAdapter {
     private List<ImagineDomeniu> imagini = null;
     private Context ctx;
     private int resursaLayout;
@@ -36,16 +36,18 @@ public class ImagineAdapter extends BaseAdapter  {
     }
 
     @Override
-    public View getView(int i, View convertView, ViewGroup viewGroup) {
-        LayoutInflater inflater = LayoutInflater.from(ctx);
-        View v = inflater.inflate(resursaLayout, viewGroup, false);
+    public View getView(int i, View view, ViewGroup viewGroup) {
 
-        ImagineDomeniu imagine = (ImagineDomeniu)getItem(i);
-        ImageView imagineIv = v.findViewById(R.id.avionIv);
-        TextView descriereTv = v.findViewById(R.id.numeImagineTv);
+        LayoutInflater inf = LayoutInflater.from(ctx);
+        View v = inf.inflate(resursaLayout,viewGroup,false);
 
-        imagineIv.setImageBitmap(imagine.getImagine());
-        descriereTv.setText(imagine.getTextAfisat());
+        ImagineDomeniu imagine = (ImagineDomeniu) getItem(i);
+        ImageView imagineIV = v.findViewById(R.id.avionIv);
+        TextView descriereTV = v.findViewById(R.id.descriereTv);
+
+        imagineIV.setImageBitmap(imagine.getImagine());
+        descriereTV.setText(imagine.getTextAfisat());
+
         return v;
     }
 }

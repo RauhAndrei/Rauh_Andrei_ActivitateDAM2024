@@ -54,8 +54,8 @@ public class AccuWeatherActivity extends AppCompatActivity {
         Executor executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.myLooper());
 
-        Button apiBtn = findViewById(R.id.cautaCodOrasBtn);
-        apiBtn.setOnClickListener(new View.OnClickListener() {
+        Button cautaCodOrasBtn = findViewById(R.id.cautaCodOrasBtn);
+        cautaCodOrasBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText orasEt = findViewById(R.id.orasEt);
@@ -92,9 +92,10 @@ public class AccuWeatherActivity extends AppCompatActivity {
 
                             TextView orasTV = findViewById(R.id.idKeyTv);
 
-                            String urlWeather= null;
+                            String urlWeather = null;
                             if (durata==1){
-                                urlWeather = "http://dataservice.accuweather.com/forecasts/v1/daily/1day/" + cheieOras + "?apikey=" + apiKey + "&metric=true";
+                                urlWeather = "http://dataservice.accuweather.com/forecasts/v1/daily/1day/" + cheieOras
+                                        + "?apikey=" + apiKey + "&metric=true";
                         }
                             else {
                                 urlWeather = "http://dataservice.accuweather.com/forecasts/v1/daily/5day/" + cheieOras

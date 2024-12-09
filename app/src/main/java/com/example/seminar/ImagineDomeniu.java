@@ -21,14 +21,6 @@ public class ImagineDomeniu {
         this.textAfisat = textAfisat;
     }
 
-    public Bitmap getImagine() {
-        return imagine;
-    }
-
-    public void setImagine(Bitmap imagine) {
-        this.imagine = imagine;
-    }
-
     public String getLink() {
         return link;
     }
@@ -37,4 +29,11 @@ public class ImagineDomeniu {
         this.link = link;
     }
 
+    public Bitmap getImagine() {
+        return imagine;
+    }
+
+    public void setImagine(Bitmap imagine) {
+        this.imagine = imagine;
+    }
 }
