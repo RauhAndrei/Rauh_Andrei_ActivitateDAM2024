@@ -24,9 +24,9 @@ public class AvioaneFavorite extends AppCompatActivity {
 
         SharedPreferences sp = getSharedPreferences("obiecteFavorite", MODE_PRIVATE);
         Map<String, ?> allEntries = sp.getAll();
-
         ArrayList<String> listaAviaoneFavorite = new ArrayList<>();
-        for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
+
+        for(Map.Entry<String, ?> entry: allEntries.entrySet()) {
             listaAviaoneFavorite.add(entry.getValue().toString());
         }
 
@@ -37,9 +37,7 @@ public class AvioaneFavorite extends AppCompatActivity {
         });
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1, listaAviaoneFavorite);
-
         ListView avioaneFavoriteLv = findViewById(R.id.avioaneFavoriteLv);
         avioaneFavoriteLv.setAdapter(adapter);
-
     }
 }

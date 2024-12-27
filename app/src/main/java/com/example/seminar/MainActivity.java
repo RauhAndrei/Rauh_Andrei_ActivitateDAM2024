@@ -84,11 +84,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 403) {
-            if (resultCode == RESULT_OK) {
+        if (requestCode == 403 && resultCode == RESULT_OK) {
                 Avion avion = data.getParcelableExtra("avion");
                 avioane.add(avion);
-            }
         }
     }
 }
